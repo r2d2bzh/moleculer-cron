@@ -6,7 +6,7 @@ const cron = require("cron");
 const { ServiceBroker } = require("moleculer");
 
 describe("Test Cron constructor", () => {
-	const broker = new ServiceBroker();
+	const broker = new ServiceBroker({ logLevel: { "**": "none" } });
 	const service = broker.createService(Cron);
 	it("should be created", () => {
 		expect(service).toBeDefined();
@@ -16,7 +16,7 @@ describe("Test Cron constructor", () => {
 });
 
 describe("Test Cron created handler", () => {
-	const broker = new ServiceBroker();
+	const broker = new ServiceBroker({ logLevel: { "**": "none" } });
 
 	let cronJob = {};
 	cron.CronJob = jest.fn(() => cronJob);
@@ -25,10 +25,10 @@ describe("Test Cron created handler", () => {
 
 	let cron1 = {
 		name: nameJob,
-		cronTime: '* * * * *',
+		cronTime: "* * * * *",
 		onTick: jest.fn(),
 		runOnInit: jest.fn(),
-		timeZone: 'America/Nipigon'
+		timeZone: "America/Nipigon"
 	};
 
 	const service = broker.createService(
@@ -56,7 +56,7 @@ describe("Test Cron created handler", () => {
 });
 
 describe("Test Cron getJob method", () => {
-	const broker = new ServiceBroker();
+	const broker = new ServiceBroker({ logLevel: { "**": "none" } });
 
 	const service = broker.createService(
 		{
@@ -70,7 +70,7 @@ describe("Test Cron getJob method", () => {
 		{ name: "job1" },
 		{ name: "job2" },
 		{ name: "job3" }
-	]
+	];
 
 	it("should be found job by name", () => {
 		expect(service.getJob("job2")).toBe(service.$crons[1]);
@@ -79,7 +79,7 @@ describe("Test Cron getJob method", () => {
 });
 
 describe("Test Cron getCronTime method", () => {
-	const broker = new ServiceBroker();
+	const broker = new ServiceBroker({ logLevel: { "**": "none" } });
 
 	cron.CronTime = jest.fn(() => {});
 
@@ -99,7 +99,6 @@ describe("Test Cron getCronTime method", () => {
 
 });
 
-
 describe("Test Cron started handler", () => {
 	it("should call start & runOnInit", () => {
 		const runOnInitCB = jest.fn();
@@ -109,7 +108,7 @@ describe("Test Cron started handler", () => {
 		};
 		cron.CronJob = jest.fn(() => cronJob);
 
-		const broker = new ServiceBroker();
+		const broker = new ServiceBroker({ logLevel: { "**": "none" } });
 		broker.createService({
 			name: "cron",
 			mixins: [Cron],
@@ -135,7 +134,7 @@ describe("Test Cron started handler", () => {
 		};
 		cron.CronJob = jest.fn(() => cronJob);
 
-		const broker = new ServiceBroker();
+		const broker = new ServiceBroker({ logLevel: { "**": "none" } });
 		broker.createService({
 			name: "cron",
 			mixins: [Cron],
@@ -157,11 +156,9 @@ describe("Test Cron started handler", () => {
 });
 
 describe("Test Cron stopped handler", () => {
-	const broker = new ServiceBroker();
+	const broker = new ServiceBroker({ logLevel: { "**": "none" } });
 
 	it("should call job stop", () => {
-		const runOnInitCB = jest.fn();
-
 		let cronJob = {
 			start: jest.fn(),
 			stop: jest.fn()
@@ -185,4 +182,3 @@ describe("Test Cron stopped handler", () => {
 	});
 
 });
-

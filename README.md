@@ -57,7 +57,7 @@ broker.createService({
 
                 console.log('JobWhoStartAnother ticked');
 
-                var job = this.getJob("JobHelloWorld");
+                const job = this.getJob("JobHelloWorld");
 
                 if (!job.lastDate()) {
                     job.start();

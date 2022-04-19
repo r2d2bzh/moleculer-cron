@@ -2,10 +2,10 @@
  * moleculer-cron
  */
 
- "use strict";
+"use strict";
 
 const cron = require("cron");
-
+const { v4: uuid } = require("uuid");
 
 /**
 	cronOpts
@@ -43,18 +43,7 @@ module.exports = {
 		 * @returns {CronJob}
 		 */
 		getJob(name) {
-			return this.$crons.find((job) => job.hasOwnProperty("name") && job.name == name);
-		},
-
-		//	stolen on StackOverflow
-		makeid(size) {
-			var text = "";
-			var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-			for (var i = 0; i < size; i++)
-			text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-			return text;
+			return this.$crons.find((job) => job?.name === name);
 		},
 
 		/**
@@ -64,7 +53,6 @@ module.exports = {
 		getCronTime(time) {
 			return new cron.CronTime(time);
 		}
-
 	},
 
 	/**
@@ -77,31 +65,31 @@ module.exports = {
 			this.$crons = this.schema.crons.map((job) => {
 				//	Prevent error on runOnInit that handle onTick at the end of the constructor
 				//	We handle it ourself
-				var cacheFunction = job.runOnInit;
+				const cacheFunction = job.runOnInit;
 				job.runOnInit = undefined;
 				//	Just add the broker to handle actions and methods from other services
-				var instance_job = new cron.CronJob(
+				const instance_job = new cron.CronJob(
 					Object.assign(
 						job,
 						{
 							context: Object.assign(
-											this.broker,
-											{
-												getJob: this.getJob
-											}
-									)
+								this.broker,
+								{
+									getJob: this.getJob
+								}
+							)
 						}
 					)
 				);
 				instance_job.runOnStarted = cacheFunction;
 				instance_job.manualStart = job.manualStart || false;
-				instance_job.name = job.name || this.makeid(20);
+				instance_job.name = job.name || uuid();
 				
 				return instance_job;
 			});
 		}
 
-		return this.Promise.resolve();
+		return Promise.resolve();
 	},
 
 	/**

@@ -1,5 +1,5 @@
 {
-  "name": "moleculer-cron",
+  "name": "@r2d2bzh/moleculer-cron",
   "version": "0.1.0",
   "description": "Mixin for Node-Cron",
   "main": "index.js",
@@ -16,7 +16,7 @@
     "type": "git",
     "url": "git@github.com:r2d2bzh/moleculer-cron.git"
   },
-  "homepage": "https://github.com/davidroman0O/moleculer-cron#readme",
+  "homepage": "https://github.com/r2d2bzh/moleculer-cron#readme",
   "author": "David Roman",
   "peerDependencies": {
     "moleculer": "^0.14.19"

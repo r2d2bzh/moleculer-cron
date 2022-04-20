@@ -1,3 +1,12 @@
+<a name="0.x.x"></a>
+# 0.1.1 (2022-04-20)
+
+## Changes
+
+* Removing unnecessary files from published package
+
+--------------------------------------------------
+
 <a name="0.1.0"></a>
 # 0.1.0 (2022-04-19)
 

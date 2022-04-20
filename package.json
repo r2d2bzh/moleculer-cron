@@ -16,6 +16,9 @@
     "type": "git",
     "url": "git@github.com:r2d2bzh/moleculer-cron.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "homepage": "https://github.com/r2d2bzh/moleculer-cron#readme",
   "author": "David Roman",
   "peerDependencies": {

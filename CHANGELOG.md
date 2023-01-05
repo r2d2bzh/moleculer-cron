@@ -1,4 +1,28 @@
-<a name="0.x.x"></a>
+<a name="0.1.3"></a>
+# 0.1.3 (2023-01-05)
+
+## Documentation
+
+* Fix installation command
+* Update changelog
+
+## Maintenance
+
+* Bump dev dependencies version
+
+--------------------------------------------------
+
+<a name="0.1.2"></a>
+# 0.1.2 (2022-10-28)
+
+## Maintenance
+
+* Bump dependencies version
+* Bump dev dependencies version
+
+--------------------------------------------------
+
+<a name="0.1.1"></a>
 # 0.1.1 (2022-04-20)
 
 ## Changes
@@ -29,18 +53,5 @@
 ## Changes
 
 * Removing unnecessary dev dependencies (benchmarkify, coveralls, lolex, moleculer-docgen, nodemon, npm-check)
-
---------------------------------------------------
-
-<a name="0.x.x"></a>
-# 0.x.x (2017-xx-xx)
-
-## New
-
-## Fixes
-
-## Breaking changes
-
-## Changes
 
 --------------------------------------------------

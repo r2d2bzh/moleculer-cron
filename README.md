@@ -11,7 +11,7 @@ Easy to use cron with moleculer!
 # Install
 
 ```bash
-$ npm install moleculer-cron --save
+$ npm install @r2d2bzh/moleculer-cron --save
 ```
 
 # Usage
@@ -22,7 +22,7 @@ Specify all of your cron task inside of the constructor of the addon.
 
 
 ```js
-const Cron = require("moleculer-cron");
+const Cron = require("@r2d2bzh/moleculer-cron");
 
 
 broker.createService({

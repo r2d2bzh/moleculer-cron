@@ -5,6 +5,8 @@ const cron = require("cron");
 
 const { ServiceBroker } = require("moleculer");
 
+jest.mock("cron", () => jest.fn());
+
 describe("Test Cron constructor", () => {
 	const broker = new ServiceBroker({ logLevel: { "**": "none" } });
 	const service = broker.createService(Cron);
